@@ -1,0 +1,40 @@
+<div class='class-grades'>
+    <div class='class-gradebar' *ngIf='classData.grade_criteria'>
+      <div
+        class='gradebar-section'
+        *ngFor="let grade of classData.grade_criteria"
+        [ngStyle]='{
+          "width": grade.percentage + "%",
+          "background": grade.color
+        }'
+        >
+        <div class='gradebar-info'><span>{{grade.type}} - {{grade.percentage}}%</span></div>
+      </div>
+    </div>
+    <div class='class-grades-container'>
+      <mat-accordion>
+          <mat-expansion-panel class='grade-section' *ngFor="let grade of classData.grade_criteria">
+            <mat-expansion-panel-header class='grade-section-header'>
+              <mat-panel-title>
+                {{grade.type}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class='assignment' *ngFor="let assignment of grade.assignments" (click)='openDialog(assignment)'>
+              <div class='assignment-title'>
+                  {{assignment.name}}
+              </div>
+              <div class='assignment-duedate'>
+                {{assignment.duedate}}
+              </div>
+              <div class='assignment-grade'>
+                  100
+              </div>
+
+            </div>
+            <div class='add-grade'>
+              <mat-icon (click)='addAssignment(grade.type)'>add_circle</mat-icon>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+  </div>

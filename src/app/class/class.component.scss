@@ -1,0 +1,67 @@
+.class-view {
+  margin-top: 44px;
+  width: 100vw;
+  bottom: 0;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  padding-top: 25px;
+  overflow: scroll;
+
+}
+
+.mat-button-toggle-label-content{
+  line-height: 40px !important;
+}
+
+.mat-button-toggle-checked .mat-button-toggle-focus-overlay{
+  border-bottom: none !important;
+}
+
+.class-header {
+  font-family: roboto mono;
+  padding-bottom: 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  .class-edit-icon{
+    font-size: 16px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+}
+
+.class-title{
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.class-title:hover{
+  background: rgba(255,255,255,0.5);
+  .class-edit-icon{
+    display: flex;
+  }
+}
+
+.class-nav{
+  font-size: 14px;
+}
+
+.mat-button-toggle-group {
+  border: 1px solid rgba(0,0,0,0.5)
+}
+
+.mat-button-toggle:not(:last-child) {
+  border-right: 1px solid rgba(0,0,0,0.5);
+}
+
+.mat-button-toggle-checked{
+  background: rgba(0,0,0,0.8);
+  color: white;
+}

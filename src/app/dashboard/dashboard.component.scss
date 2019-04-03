@@ -1,0 +1,90 @@
+.greeting{
+  font-family: roboto mono;
+  margin-bottom: 50px;
+}
+
+.dash-section{
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+  width: 30%;
+}
+
+.dash-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard-tab {
+  background: rgba(255,255,255,0.6);
+  position: relative;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+
+
+
+  .class-id{
+    padding: 5px;
+    background: white;
+    color: gray;
+    border-radius: 5px;
+    font-weight: 100;
+  }
+
+}
+
+
+.dashboard-tab:hover {
+  background: rgba(255,255,255,0.8);
+  cursor: pointer;
+  .class-id{
+    padding: 5px;
+    color: white;
+    background: gray;
+  }
+}
+
+.dashboard-tab:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tab-title{
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-family: roboto mono;
+  font-size: 14px;
+}
+
+.tab-title:hover{
+  background: rgba(0,0,0,0.8);
+}
+
+.tab-title:hover::before {
+  display: none;
+}

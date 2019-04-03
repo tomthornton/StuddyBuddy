@@ -1,0 +1,20 @@
+<div class='class-view' *ngIf='classData'>
+  <div class='class-header'>
+    <div class='class-title'>
+      {{classData.name}}
+      <mat-icon class='class-edit-icon'>edit</mat-icon>
+    </div>
+      <mat-button-toggle-group class='class-nav' (valueChange)='changeView($event)'>
+        <mat-button-toggle value="Grades" checked='true'>
+          Grades
+        </mat-button-toggle>
+        <mat-button-toggle value="Files">
+          Files
+        </mat-button-toggle>
+        <mat-button-toggle value="Chat">
+          Chat
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  <app-grades [classData]='classData' [userID]='userID'></app-grades>
+</div>

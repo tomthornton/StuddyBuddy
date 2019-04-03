@@ -1,0 +1,24 @@
+.dialog-title{
+  font-family: roboto mono;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-submit{
+  color: white;
+  background: green;
+}
+
+.dialog-subtitle {
+  font-size: 14px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dialog-subtitle-container{
+  display: flex;
+  justify-content: center;
+}

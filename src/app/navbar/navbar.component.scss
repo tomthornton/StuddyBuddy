@@ -1,0 +1,92 @@
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 10px;
+  justify-content: space-between;
+  display: none;
+  z-index: 1000;
+  .current-route{
+    color: white;
+    font-family: roboto mono;
+    font-size: 14px;
+    text-transform: capitalize;
+    display: flex;
+    div{
+      margin-left: 10px;
+    }
+  }
+  .navlink{
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    #nav-useroptions .sub-arrow{
+      right: 14px;
+    }
+    .sub-menu{
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      position: absolute;
+      top: calc(100% + 20px);
+      min-width: 130px;
+      right: -10px;
+      background: #313131;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: 5px;
+      .sub-arrow {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #313131;
+        position: absolute;
+        top: -10px;
+      }
+      a{
+        color: white !important;
+        text-decoration: none !important;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        font-weight: 100;
+      }
+      a:not(:last-child){
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+      }
+    }
+  }
+  .nav-arrow{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+  }
+  .navbar-route{
+    color: white;
+    font-size: 14px;
+    font-weight: 100;
+    a{
+      cursor: pointer;
+      position: relative;
+      bottom: 6px;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+.mat-icon{
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+

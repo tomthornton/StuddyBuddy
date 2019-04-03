@@ -1,0 +1,27 @@
+<div id='navbar' class='navbar'>
+  <div *ngIf='class' class='current-route'>
+    {{class[1]}}
+    <div *ngIf='class[2]'>  >  {{class[2]}}</div>
+  </div>
+  <div class='nav-links'>
+  <a class='navlink'>
+    <mat-icon>event</mat-icon>
+  </a>
+  <a class='navlink'>
+    <mat-icon>chat_bubble</mat-icon>
+  </a>
+  <a class='navlink'>
+    <mat-icon>notifications</mat-icon>
+  </a>
+  <a (click)='showuserOptions()' class='navlink'>
+    <mat-icon>account_circle</mat-icon>
+    <div *ngIf='userOptionsVisible' id='nav-useroptions' class='sub-menu'>
+      <div class='sub-arrow'></div>
+      <a >My Profile</a>
+      <a [routerLink]="['/dashboard']">Dashboard</a>
+      <a (click)='signOut()'>Sign Out</a>
+    </div>
+  </a>
+  </div>
+
+</div>
