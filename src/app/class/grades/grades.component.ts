@@ -95,6 +95,8 @@ export class GradesComponent implements OnInit {
       ref = refString;
     } else if (data.action === 'update' && data.type === 'assignment') {
       ref = refString + '/assignments/' + data.data.dbID;
+    } else if (data.action === 'create' && data.type === 'grade type') {
+      ref = '/classes/' + this.classData.dbID + '/grades';
     } else if (data.action === 'update' && data.type === 'grade type') {
       ref = refString;
     }
