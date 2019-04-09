@@ -1,0 +1,58 @@
+<h1 mat-dialog-title class='dialog-title'>
+  {{data.title}}
+  <div class='dialog-subtitle-container'>
+    <div class='dialog-subtitle' *ngIf='data.type'>
+      {{data.type}}
+    </div>
+  </div>
+  <mat-icon class='dialog-close' *ngIf='data.closeButton' (click)='closeDialog()'>close</mat-icon>
+</h1>
+<div mat-dialog-content >
+  <form *ngIf='data.fields'>
+    <div class='dialog-input' *ngFor='let field of data.fields'>
+      <span class='dialog-input-name'>{{field.name}}</span><input value='{{field.value}}'>
+    </div>
+  </form>
+  <div class='slider-wrapper'>
+    <div class='slider-container' [ngStyle]='{"left": addCourse ? "calc(-100% - 25px)" : "0px" }'>
+      <div class='slide'>
+        <div class='options-list' *ngIf='data.optionList'
+        [ngStyle]='{"min-height": data.optionList ? "306px" : "inherit" }'>
+          <div class='options-list-item' *ngFor='let option of data.optionList | async'>
+            <div class='option-title'>
+              <span class='option-subtitle'>{{option.id}}</span>{{option.name}}
+            </div>
+            <div class='option-actions' *ngFor='let action of data.optionActions'>
+              <mat-icon class='option-action' *ngFor='let action of data.optionActions' (click)='removeCourse(option.id)'>
+                {{action.icon}}
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='slide'>
+        <div class='add-classes-container'>
+          <div class='add-class' *ngFor='let class of data.allClasses | async' (click)='addClass(class)'>
+            <div class='add-class-title'>
+              <span class='add-class-id'>{{class.id}}</span>{{class.name}}
+            </div>
+            <mat-icon class='add-class-button' (click)='addClass(class)'>add</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class='dialog-actions'>
+  <button class='dialog-button'
+  *ngFor='let button of data.buttons'
+  mat-raised-button (click)='addCourseView()'
+  [ngStyle]='{"opacity" : addCourse ? 0 : 1, "display": addCourseButtonHide ? "none" : "block"}'
+  >
+    {{button.name}}
+  </button>
+  <mat-icon class='dialog-back-button'
+  [ngStyle]='{"color": "blue", "opacity" : addCourse ? 1 : 0, "display": editCourseButtonHide ? "none" : "block"}'
+  (click)='editCourseView()'
+  >arrow_back</mat-icon>
+</div>

@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    document.getElementById('navbar').style.display = 'flex';
   }
 
 }

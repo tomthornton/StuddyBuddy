@@ -1,6 +1,6 @@
 <div class='class-view' *ngIf='classData'>
   <div class='class-header'>
-    <div class='class-title'>
+    <div class='class-title' (click)='editClass()' *ngIf='classData'>
       {{classData.name}}
       <mat-icon class='class-edit-icon'>edit</mat-icon>
     </div>

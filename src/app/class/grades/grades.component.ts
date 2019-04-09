@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GradeService } from './grade.service';
 import { MatDialog } from '@angular/material';
-import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { GradeDialogComponent } from './gradedialog/gradedialog.component';
 
 @Component({
   selector: 'app-grades',
@@ -16,37 +16,98 @@ export class GradesComponent implements OnInit {
   @Input()classID;
   @Input()userID;
   public classGrades;
-  constructor(private grades: GradeService, public dialog: MatDialog) { }
+
+  constructor(private grades: GradeService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.classData);
   }
 
-  openDialog(assignment): void {
-    console.log(assignment);
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '500px',
-      data: {
-        title: assignment.name,
-        type: assignment.type,
-        fields: [
+  getOptions(data, method) {
+    let options = [];
+    switch (data.type) {
+      case('assignment'):
+        options = [
           {
-            name: 'Grade',
-            value: '100'
+          'type': 'input',
+          'name': 'name',
+          'value': method !== 'create' ? data.data.name : ''
+          },
+          {
+          'type': 'date',
+          'name': 'date',
+          'value': method !== 'create' ? data.data.timestamp : ''
+          },
+          {
+          'type': 'input',
+          'name': 'time',
+          'value': method !== 'create' ? data.data.time : '',
+          'AMPM' : method !== 'create' ? data.data.AMPM : 'AM'
+          },
+          {
+          'type': 'input',
+          'name': 'grade',
+          'value': '',
+          'suffix' : '%'
           }
-        ]
+        ];
+        break;
+      case('grade type'):
+        options = [
+          {
+          'type': 'input',
+          'name': 'name',
+          'value': method !== 'create' ? data.data.name : '',
+          },
+          {
+          'type': 'input',
+          'name': 'Weight (%)',
+          'value': method !== 'create' ? data.data.percentage : '',
+          },
+          {
+          'type': 'select',
+          'name': 'color',
+          'value' : method !== 'create' ? data.data.color : '',
+          'options' : ['gray', 'blue', 'red', 'green', 'orange', 'yellow', 'purple', 'teal']
+          }
+        ];
+        break;
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    return options;
   }
 
-  addAssignment(gradeType) {
-    this.classData.ref.collection('assignments').add({
-      'type': gradeType,
-      'name' : 'New Assignment'
-    });
-  }
+  dataActions(data, refString) {
+    const optionConfig = data.data ? {type: data.type, data: data.data} : {type: data.type};
+    const buttons = data.action === 'create' ? [{
+      text: 'Save New ' + data.type,
+      method: 'create'
+    }] : [
+      {
+        text: 'Save ' + data.type,
+        method: 'update'
+      },
+      {
+        text: 'Delete ' + data.type
+      },
+    ];
+    let ref = '';
+    console.log(data);
+    if (data.action === 'create' && data.type === 'assignment') {
+      ref = refString;
+    } else if (data.action === 'update' && data.type === 'assignment') {
+      ref = refString + '/assignments/' + data.data.dbID;
+    } else if (data.action === 'update' && data.type === 'grade type') {
+      ref = refString;
+    }
+    console.log(ref);
 
+    const dialogRef = this.dialog.open(GradeDialogComponent, {
+      width: '600px',
+      data: {
+        title: data.action === 'create' ? 'New ' + data.type : 'Edit ' + data.type,
+        refString: ref,
+        type: data.type,
+        options: this.getOptions(optionConfig, data.action),
+        buttons: buttons
+    }});
+  }
 }

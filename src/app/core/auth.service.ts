@@ -11,6 +11,7 @@ import { switchMap} from 'rxjs/operators';
 interface User {
   uid: string;
   email: string;
+  classes?: [];
   photoURL?: string;
   displayName?: string;
   favoriteColor?: string;
@@ -33,7 +34,7 @@ export class AuthService {
           if (user) {
             return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
           } else {
-            return of(null)
+            return of(null);
           }
         })
       )

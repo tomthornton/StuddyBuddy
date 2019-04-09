@@ -1,7 +1,14 @@
 <div id='navbar' class='navbar'>
-  <div *ngIf='class' class='current-route'>
-    {{class[1]}}
-    <div *ngIf='class[2]'>  >  {{class[2]}}</div>
+  <div [ngStyle]='{"display": "flex"}'>
+    <a class='navlink' [routerLink]="['/dashboard']">
+          <mat-icon>home</mat-icon>
+      </a>
+    <div class='current-route'>
+        <mat-menu #classNav="matMenu">
+            <button mat-menu-item *ngFor='let class of classMenu'>{{class.name}}</button>
+        </mat-menu>
+      <a [matMenuTriggerFor]="classNav">{{route}}</a>
+    </div>
   </div>
   <div class='nav-links'>
   <a class='navlink'>
@@ -10,11 +17,8 @@
   <a class='navlink'>
     <mat-icon>chat_bubble</mat-icon>
   </a>
-  <a class='navlink'>
-    <mat-icon>notifications</mat-icon>
-  </a>
   <a (click)='showuserOptions()' class='navlink'>
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon>settings</mat-icon>
     <div *ngIf='userOptionsVisible' id='nav-useroptions' class='sub-menu'>
       <div class='sub-arrow'></div>
       <a >My Profile</a>

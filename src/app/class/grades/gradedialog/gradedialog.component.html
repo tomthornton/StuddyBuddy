@@ -1,0 +1,43 @@
+<h1 class='dialog-title'mat-dialog-title >{{data.title}} <mat-icon class='dialog-close' (click)='closeDialog()'>close</mat-icon></h1>
+<div class='dialog-content'mat-dialog-content>
+  <div class='dialog-alert'>{{alertMessage}}</div>
+    <div *ngIf='data.options'>
+    <mat-form-field class="dialog-option"
+      *ngFor='let option of data.options'
+      [ngStyle]='{"width": data.type === "assignment" && option.name ==="name" ? "100%" : ""}'
+      >
+      <mat-label>{{option.name}}</mat-label>
+      <span matSuffix *ngIf='option.suffix'>{{option.suffix}}</span>
+      <span *ngIf='option.name === "time"' class='time-select'>
+          <select
+            (click)="timeSelect($event)"
+            (change)='updateData("AMPM", $event.target.value)'
+            [value]='option.AMPM'>
+              <option>AM</option>
+              <option>PM</option>
+            </select>
+      </span>
+      <div class='dialog-color' *ngIf='option.name == "Color"' [ngStyle] ='{"background": option.value}'></div>
+      <mat-select *ngIf='option.type === "select"' [value]='option.value' (selectionChange)='updateData(option.name, $event.value)'>
+        <mat-option *ngFor="let selectOption of option.options" [value]="selectOption">
+          {{selectOption}}
+          <div class='dialog-color' *ngIf='option.name == "Color"' [ngStyle] ='{"background": selectOption}'></div>
+        </mat-option>
+      </mat-select>
+      <div *ngIf='option.type == "date"'>
+          <input matInput [matDatepicker]="picker3" [value]='option.value'(dateInput)='updateData("date", $event.target.value)'>
+          <mat-datepicker-toggle class='date-toggle' matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </div>
+      <input matInput [value]="option.value"
+      (input)='updateData(option.name, $event.target.value)'
+      *ngIf='option.type === "input"'>
+    </mat-form-field>
+    </div>
+    <div class='dialog-confirm' *ngIf='data.confirm'>{{data.confirm}}</div>
+  </div>
+<div class='dialog-actions'mat-dialog-actions >
+  <button class='dialog-button' mat-raised-button *ngFor='let button of data.buttons' (click)='gradeActions(button.method)'>
+    {{button.text}}
+  </button>
+</div>

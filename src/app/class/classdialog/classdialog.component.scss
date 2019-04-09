@@ -1,0 +1,87 @@
+
+  .dialog-button{
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #021B79, #0575E6);
+    color: white;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .dialog-title {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: space-between;
+    position: relative;
+  }
+  .class-title{
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .class-id{
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #021B79, #0575E6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+  }
+
+  .grades-wrapper {
+    height: 100%;
+    border: 2px solid rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    overflow: scroll;
+  }
+
+
+  .class-name{
+    color: black;
+    font-weight: 100;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .grade-type-title {
+    padding: 10px;
+    color: white;
+    background: linear-gradient(to bottom, #b5b5b5, #4a4a4a);
+    font-size: 14px;
+  }
+
+  .assignment{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.assignment:not(:last-child){
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+  .class-title{
+      display: flex;
+      font-size: 16px;
+  }
+
+    .dialog-close{
+      color: black;
+      position: relative;
+    }
+
+  .dialog-close{
+    cursor: pointer;
+  }
+
+  .class-dialog{
+    width: 100%;
+  }
+
+  .dialog-actions{
+    display: flex;
+    justify-content: center;
+  }

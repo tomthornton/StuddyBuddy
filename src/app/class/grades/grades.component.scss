@@ -105,3 +105,91 @@ width: 100%;
     font-size: 14px;
     padding: 5px;
 }
+
+.class-grades-wrapper {
+  background: rgba(255,255,255,0.5);
+  height: calc(100vh - 230px);
+  border: 2px solid rgba(0,0,0,0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.class-grades-title{
+  padding: 13px;
+  background: #292929;
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+}
+
+.class-grade{
+  cursor: pointer;
+}
+
+.class-grade-title {
+  padding: 10px;
+  font-size: 14px;
+  background: white;
+  color: white;
+  border-bottom: 1px solid rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.class-grade-title-overlay {
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  opacity: 0.9;
+}
+
+.class-assignment {
+  font-size: 14px;
+  padding: 15px 30px;
+  background: white;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: space-between;
+}
+.class-assignment:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  position: relative;
+}
+.class-assignment-datetime{
+  display: flex;
+}
+
+.assignment-date{
+  margin-right: 20px;
+}
+
+.class-assignment:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+.class-grades-options {
+  padding: 0px !important;
+  min-width: 40px;
+}
+
+.class-grades-options:hover{
+  background: rgba(0,0,0,0.3);
+}

@@ -1,6 +1,7 @@
 .greeting{
   font-family: roboto mono;
   margin-bottom: 50px;
+  position: relative;
 }
 
 .dash-section{
@@ -8,6 +9,7 @@
   border-radius: 5px;
   box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
   width: 30%;
+  min-height: 362px;
 }
 
 .dash-wrapper {
@@ -79,6 +81,7 @@
   color: white;
   font-family: roboto mono;
   font-size: 14px;
+  line-height: 23px;
 }
 
 .tab-title:hover{

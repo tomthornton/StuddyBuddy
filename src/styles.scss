@@ -4,9 +4,15 @@
 body{
   font-family: roboto;
   margin: 0px;
-  background: url('./assets/table-texture.jpg');
-  background-size: cover;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; max-height: 100vh; overflow: hidden;}
+
+.mat-form-field-label-wrapper{
+  text-transform: capitalize;
+}
+
+.mat-datepicker-toggle-default-icon{
+  width: 1em !important;
+}

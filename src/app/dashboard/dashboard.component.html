@@ -1,5 +1,5 @@
 
-<div class='dashboard-container' *ngIf='myClasses'>
+<div class='dashboard-container'>
   <h1 *ngIf='userName' class='greeting'>Hello, {{userName[0]}}</h1>
   <div class='dash-wrapper'>
     <div class='dash-section'>
@@ -7,17 +7,19 @@
     </div>
     <div class='dash-section'>
       <div class='dashboard-tab tab-title'>
-        Courses</div>
+        Courses
+
+        <mat-icon (click)='editCourses()'>more_horiz</mat-icon>
+      </div>
       <div
         *ngFor="let class of myClasses | async"
         class='dashboard-tab'
         [routerLink]="['/classes', class.id]">
         <div class='class-name'>{{class.name}}</div>
-        <div class='class-id'>{{class.id}}</div>
       </div>
     </div>
     <div class='dash-section'>
-        <div class='dashboard-tab tab-title'>Notifications</div>
+        <div class='dashboard-tab tab-title'>Inbox</div>
     </div>
   </div>
 </div>

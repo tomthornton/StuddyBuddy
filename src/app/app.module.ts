@@ -11,6 +11,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DateAdapter } from '@angular/material';
 
 import { AuthGuard } from './core/auth.guard';
 
@@ -22,7 +28,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { GradesComponent } from './class/grades/grades.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogComponent } from './dialog/dialog.component';
+import { DashDialogComponent } from './dashboard/dashdialog/dashdialog.component';
+import { ClassDialogComponent } from './class/classdialog/classdialog.component';
+import { GradeDialogComponent } from './class/grades/gradedialog/gradedialog.component';
+import { MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,9 @@ import { DialogComponent } from './dialog/dialog.component';
     NavbarComponent,
     LoginComponent,
     GradesComponent,
-    DialogComponent
+    DashDialogComponent,
+    ClassDialogComponent,
+    GradeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +55,16 @@ import { DialogComponent } from './dialog/dialog.component';
     MatButtonToggleModule,
     MatExpansionModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    MatStepperModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatSelectModule
   ],
-  providers: [AngularFireAuth, AuthGuard],
-  entryComponents: [DialogComponent],
+  providers: [AngularFireAuth, AuthGuard, MatDatepickerModule],
+  entryComponents: [DashDialogComponent, ClassDialogComponent, GradeDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

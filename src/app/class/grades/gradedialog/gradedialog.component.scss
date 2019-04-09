@@ -1,0 +1,54 @@
+.dialog-color {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 15px;
+  right: 25px;
+  bottom: 15px;
+}
+
+.date-toggle{
+  width: 1em !important;
+  position: absolute;
+  right: 24px;
+  bottom: -4px;
+}
+.dialog-close{
+  cursor: pointer;
+}
+
+.time-select {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialog-confirm {
+  margin-bottom: 30px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.dialog-button{
+  background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #021B79, #0575E6);
+  color: white;
+}
+
+.dialog-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-alert{
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}

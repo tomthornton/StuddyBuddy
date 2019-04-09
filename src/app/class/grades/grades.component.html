@@ -1,8 +1,8 @@
 <div class='class-grades'>
-    <div class='class-gradebar' *ngIf='classData.grade_criteria'>
+    <div class='class-gradebar' *ngIf='classData.grades'>
       <div
         class='gradebar-section'
-        *ngFor="let grade of classData.grade_criteria"
+        *ngFor="let grade of classData.grades"
         [ngStyle]='{
           "width": grade.percentage + "%",
           "background": grade.color
@@ -11,30 +11,42 @@
         <div class='gradebar-info'><span>{{grade.type}} - {{grade.percentage}}%</span></div>
       </div>
     </div>
-    <div class='class-grades-container'>
-      <mat-accordion>
-          <mat-expansion-panel class='grade-section' *ngFor="let grade of classData.grade_criteria">
-            <mat-expansion-panel-header class='grade-section-header'>
-              <mat-panel-title>
-                {{grade.type}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class='assignment' *ngFor="let assignment of grade.assignments" (click)='openDialog(assignment)'>
-              <div class='assignment-title'>
-                  {{assignment.name}}
-              </div>
-              <div class='assignment-duedate'>
-                {{assignment.duedate}}
-              </div>
-              <div class='assignment-grade'>
-                  100
-              </div>
-
-            </div>
-            <div class='add-grade'>
-              <mat-icon (click)='addAssignment(grade.type)'>add_circle</mat-icon>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
+    <div class='class-grades-wrapper'>
+      <div class='class-grades-title'>
+        Grades
+        <div>
+          <button mat-button [matMenuTriggerFor]="gradesOptions" class='class-grades-options'>
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+          <mat-menu #gradesOptions="matMenu">
+            <button mat-menu-item (click)='dataActions({"type": "grade type", "action": "create"}, classData.refString)'>Add Grade Type</button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class='class-grade' *ngFor='let gradeType of classData.grades'>
+        <div class='class-grade-title'>
+          <span [ngStyle]='{"position": "relative", "z-index": 10}'>{{gradeType.name}}</span>
+          <div class='class-grade-title-overlay' [ngStyle]='{"background":gradeType.color}'></div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="gradesOptions" class='class-grades-options'>
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #gradesOptions="matMenu">
+              <button mat-menu-item (click)='dataActions({"type": "assignment", "action": "create"}, gradeType.refString)'>Add Assignment</button>
+              <button mat-menu-item (click)='dataActions({"type": "grade type", "action": "update", "data": gradeType}, gradeType.refString)'>Edit Grade Type</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class='class-assignment' *ngFor='let assignment of gradeType.assignments.data' (click)='dataActions({"type": "assignment", "action": "update", "data": assignment}, gradeType.refString)'>
+          <div class='class-assignment-title'>
+            {{assignment.name}}
+          </div>
+          <div class='class-assignment-datetime'>
+            <div class='assignment-date'>{{assignment.date}}</div>
+            <div class='assignment-time'>{{assignment.time}}</div>
+            <div class='assigment-AMPM'>{{assignment.AMPM}}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>

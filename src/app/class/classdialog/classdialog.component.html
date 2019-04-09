@@ -1,0 +1,21 @@
+<div class='class-dialog-wrapper'>
+<h1 class='dialog-title'mat-dialog-title >
+  <div class='class-id'>{{data.classData.id}}</div>
+    
+  <div class='class-name'> {{data.classData.name}}</div>
+  <mat-icon class='dialog-close' (click)='closeDialog()'>close</mat-icon>
+</h1>
+<div class='dialog-content'mat-dialog-content>
+  <div class='class-options'>
+    <mat-form-field class='class-dialog'>
+      <input matInput placeholder="Course ID" [value]="data.classData.id">
+    </mat-form-field>
+    <mat-form-field class='class-dialog'>
+      <input matInput placeholder="Course Name" [value]="data.classData.name">
+    </mat-form-field>
+  </div>
+</div>
+<div class='dialog-actions'mat-dialog-actions >
+  <button class='dialog-button' mat-raised-button>Save Course</button>
+</div>
+</div>
