@@ -51,6 +51,9 @@ export class DashboardComponent implements OnInit {
           {
             name: 'Add Course',
             function: 'addCourseView()'
+          },
+          {
+            name: 'New Course',
           }
         ],
         closeButton: true

@@ -2,6 +2,6 @@
 
 #Instructions
 
-1. Install Node.js - https://nodejs.org/en/
-2. cd/app
-3. run npm start
+1. docker-compose up
+  
+Development Server - localhost:4200

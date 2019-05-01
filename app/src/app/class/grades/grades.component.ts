@@ -92,7 +92,7 @@ export class GradesComponent implements OnInit {
     let ref = '';
     console.log(data);
     if (data.action === 'create' && data.type === 'assignment') {
-      ref = refString;
+      ref = refString + '/assignments';
     } else if (data.action === 'update' && data.type === 'assignment') {
       ref = refString + '/assignments/' + data.data.dbID;
     } else if (data.action === 'create' && data.type === 'grade type') {

@@ -11,6 +11,7 @@ import { of, from } from 'rxjs';
 })
 export class DashDialogComponent implements OnInit {
   public addCourse = false;
+  public newCourse = true;
   public addCourseButtonHide = false;
   public editCourseButtonHide = true;
 
@@ -25,6 +26,10 @@ export class DashDialogComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  newCourseView() {
+    this.editCourseButtonHide = false;
   }
 
   addCourseView() {
