@@ -32,6 +32,7 @@ import { DashDialogComponent } from './dashboard/dashdialog/dashdialog.component
 import { ClassDialogComponent } from './class/classdialog/classdialog.component';
 import { GradeDialogComponent } from './class/grades/gradedialog/gradedialog.component';
 import { MatNativeDateModule } from '@angular/material';
+import { ChatComponent } from './class/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatNativeDateModule } from '@angular/material';
     GradesComponent,
     DashDialogComponent,
     ClassDialogComponent,
-    GradeDialogComponent
+    GradeDialogComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

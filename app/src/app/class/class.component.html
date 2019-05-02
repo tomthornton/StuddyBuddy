@@ -1,4 +1,4 @@
-<div class='class-view' *ngIf='classData'>
+<div class='class-view'>
   <div class='class-header'>
     <div class='class-title' (click)='editClass()' *ngIf='classData'>
       {{classData.name}}
@@ -13,5 +13,8 @@
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
-  <app-grades [classData]='classData' [userID]='userID'></app-grades>
+  <app-grades [classData]='classData' [userID]='userID' *ngIf='classView; else chatView'></app-grades>
+  <ng-template #chatView>
+    <app-chat class='class-chat' [classID]='classData.dbID'></app-chat>
+  </ng-template>
 </div>

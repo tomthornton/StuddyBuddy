@@ -3,9 +3,6 @@
   <h1 *ngIf='userName' class='greeting'>Hello, {{userName[0]}}</h1>
   <div class='dash-wrapper'>
     <div class='dash-section'>
-        <div class='dashboard-tab tab-title'>Upcoming Assignments</div>
-    </div>
-    <div class='dash-section'>
       <div class='dashboard-tab tab-title'>
         Courses
 
@@ -17,9 +14,6 @@
         [routerLink]="['/classes', class.id]">
         <div class='class-name'>{{class.name}}</div>
       </div>
-    </div>
-    <div class='dash-section'>
-        <div class='dashboard-tab tab-title'>Inbox</div>
     </div>
   </div>
 </div>

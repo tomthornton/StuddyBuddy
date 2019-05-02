@@ -9,17 +9,18 @@ import { GradeDialogComponent } from './gradedialog/gradedialog.component';
   styleUrls: ['./grades.component.scss']
 })
 
-
-
 export class GradesComponent implements OnInit {
   @Input()classData;
   @Input()classID;
   @Input()userID;
+  classView;
   public classGrades;
 
   constructor(private grades: GradeService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log(this.classData);
+    this.classView = 'grades';
   }
 
   getOptions(data, method) {
@@ -90,7 +91,6 @@ export class GradesComponent implements OnInit {
       },
     ];
     let ref = '';
-    console.log(data);
     if (data.action === 'create' && data.type === 'assignment') {
       ref = refString + '/assignments';
     } else if (data.action === 'update' && data.type === 'assignment') {
@@ -100,7 +100,6 @@ export class GradesComponent implements OnInit {
     } else if (data.action === 'update' && data.type === 'grade type') {
       ref = refString;
     }
-    console.log(ref);
 
     const dialogRef = this.dialog.open(GradeDialogComponent, {
       width: '600px',

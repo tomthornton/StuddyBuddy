@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class='class-grades-wrapper'>
-      <div class='class-grades-title'>
+      <div class='class-grades-title' *ngIf="this.classView === 'grades'; else chatView">
         Grades
         <div>
           <button mat-button [matMenuTriggerFor]="gradesOptions" class='class-grades-options'>
@@ -43,7 +43,7 @@
           </div>
           <div class='class-assignment-datetime'>
             <div class='assignment-date'>{{assignment.date}}</div>
-            <div class='assignment-time'>{{assignment.time}}</div>
+            <div class='assignment-time'>{{assignment.hours + ':' + assignment.minutes}}</div>
             <div class='assigment-AMPM'>{{assignment.AMPM}}</div>
           </div>
         </div>

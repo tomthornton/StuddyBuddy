@@ -1,0 +1,16 @@
+<div class='chat-wrapper'>
+    <div [ngClass]='message.id === user.uid ? "myMessage" : "theirMessage"' class='chat-message' *ngFor='let message of chats'>
+      <span class='chat-userName'>{{message.name}}</span>
+      <div class='chat-message-wrapper'>
+        {{message.content}}
+      </div>
+      </div>
+    </div>
+<div class='chat-container'>
+  <div class='chat-enter-wrapper'>
+    <input class='chat-input' #chatMessage />
+  </div>
+  <a class='chat-enter'>
+    <mat-icon class='chat-enter-icon' (click)="this.sendChat(chatMessage.value)">send</mat-icon>
+  </a>
+</div>
