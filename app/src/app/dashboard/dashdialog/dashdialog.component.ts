@@ -74,6 +74,7 @@ export class DashDialogComponent implements OnInit {
     this.classService.removeCourse(ID);
   }
   addClass(id) {
+    console.log(id);
     this.classService.addCourse(id);
   }
 

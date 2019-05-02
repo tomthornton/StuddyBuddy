@@ -47,8 +47,9 @@ a.chat-enter {
   justify-content: flex-end;
   .chat-userName {
     align-self: flex-end;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     font-weight: thin;
+    font-size: 12px;
   }
   .chat-message-wrapper {
     align-self: flex-end;
@@ -57,8 +58,26 @@ a.chat-enter {
   }
 }
 
+.theirMessage{
+  .chat-userName{
+    padding-bottom: 10px;
+    font-size: 12px;
+  }
+  .chat-message-wrapper {
+    align-self: flex-start;
+    background: linear-gradient(to bottom, #d2d2d2, #757575);
+  }
+}
+
 .chat-message-wrapper{
   border-radius: 5px;
   padding: 10px;
   min-width: 200px;
+}
+
+.messages {
+  overflow: scroll;
+  height: calc(100vh - 222px);
+  display: flex;
+  flex-direction: column-reverse;
 }

@@ -30,7 +30,16 @@ export class ChatComponent implements OnInit {
       this.db.collection('classes/' + this.classID + '/chat').valueChanges()
         .subscribe( messages => {
           this.chats = messages;
-          console.log(messages);
+          let oldTime;
+          /* messages.forEach( (message: any) => {
+            if (oldTime) {
+              console.log(message.time._compareTo(oldTime));
+            }
+            oldTime = message.time;
+          }); */
+          console.log(messages.sort((a: any, b: any) => {
+            return b.time._compareTo(a.time);
+          }))
         });
       });
   }

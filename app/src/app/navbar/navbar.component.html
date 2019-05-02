@@ -5,7 +5,7 @@
       </a>
     <div class='current-route'>
         <mat-menu #classNav="matMenu">
-            <button mat-menu-item *ngFor='let class of classMenu'>{{class.name}}</button>
+            <button mat-menu-item *ngFor='let class of classMenu' [routerLink]="['/classes', class.id]">{{class.name}}</button>
         </mat-menu>
       <a [matMenuTriggerFor]="classNav">{{route}}</a>
     </div>

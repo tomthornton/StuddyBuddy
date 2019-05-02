@@ -3,7 +3,7 @@
   <h1 *ngIf='userName' class='greeting'>Hello, {{userName[0]}}</h1>
   <div class='dash-wrapper'>
     <div class='dash-section'>
-      <div class='dashboard-tab tab-title'>
+      <div class='dashboard-tab tab-title' style='justify-content: space-between;'>
         Courses
 
         <mat-icon (click)='editCourses()'>more_horiz</mat-icon>
@@ -12,7 +12,7 @@
         *ngFor="let class of myClasses | async"
         class='dashboard-tab'
         [routerLink]="['/classes', class.id]">
-        <div class='class-name'>{{class.name}}</div>
+        <div class='class-id'>{{class.id}}</div><div class='class-name'>{{class.name}}</div>
       </div>
     </div>
   </div>

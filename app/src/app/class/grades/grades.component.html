@@ -1,4 +1,4 @@
-<div class='class-grades'>
+<div class='class-grades' *ngIf='classData.grades'>
     <div class='class-gradebar' *ngIf='classData.grades'>
       <div
         class='gradebar-section'
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class='class-grades-wrapper'>
-      <div class='class-grades-title' *ngIf="this.classView === 'grades'; else chatView">
+      <div class='class-grades-title' *ngIf="this.classView === 'grades'">
         Grades
         <div>
           <button mat-button [matMenuTriggerFor]="gradesOptions" class='class-grades-options'>
