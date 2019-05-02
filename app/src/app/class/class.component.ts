@@ -36,6 +36,7 @@ export class ClassComponent implements OnInit {
             gradeType.assignments.obs.subscribe( assignment => {
               gradeType.assignments['data'] = [];
               assignment.subscribe( val => {
+
                 const assignmentData = val.payload.doc.data();
                 assignmentData['dbID'] = val.payload.doc.id;
                 assignmentData['timestamp'] = assignmentData.date.toDate();
@@ -43,6 +44,19 @@ export class ClassComponent implements OnInit {
                 assignmentData['minutes'] = this.formatMinutes(assignmentData.timestamp.getMinutes());
                 const dateArray = assignmentData.timestamp.toString().split(' ');
                 assignmentData.date = dateArray[0] + ' ' + dateArray[1] + ' ' + dateArray[2];
+
+                this.classService.getAssignments(val.payload.doc.ref.path)
+                  .subscribe((assignmentGrades => {
+                    this.classService.getUserID().subscribe(id => {
+                      let found = false;
+                      assignmentGrades.forEach( studentGrade => {
+                        if (studentGrade.studentID === id && !found) {
+                          assignmentData['grade'] = studentGrade.grade;
+                          found = true;
+                        }
+                      });
+                    });
+                  }));
                 gradeType.assignments.data.push(assignmentData);
               });
             });
@@ -51,6 +65,8 @@ export class ClassComponent implements OnInit {
           console.log(classData);
         });
       });
+    this.classService.getUserID()
+      .subscribe(val => this.userID = val);
   }
   editClass() {
     const dialogRef = this.dialog.open(ClassDialogComponent, {

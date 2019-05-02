@@ -79,6 +79,10 @@ export class ClassService {
     });
   }
 
+  getAssignments(ref) {
+    return this.db.doc(ref).collection('student_grades').valueChanges();
+  }
+
   newClass(classData){
     this.db.collection('classes').add(classData);
   }

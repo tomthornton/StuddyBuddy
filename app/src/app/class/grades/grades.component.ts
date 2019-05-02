@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GradeService } from './grade.service';
 import { MatDialog } from '@angular/material';
 import { GradeDialogComponent } from './gradedialog/gradedialog.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-grades',
@@ -16,11 +17,24 @@ export class GradesComponent implements OnInit {
   classView;
   public classGrades;
 
-  constructor(private grades: GradeService, private dialog: MatDialog) { }
+  constructor(private db: AngularFirestore, private grades: GradeService, private dialog: MatDialog) { }
 
   ngOnInit() {
     console.log(this.classData);
     this.classView = 'grades';
+  }
+
+  focusInput(event,dbID) {
+    console.log('clicked');
+  }
+
+  updateGrade(val,assignmentID, refString) {
+    console.log(this.userID);
+    const ref = refString + '/assignments/' + assignmentID + '/student_grades';
+    this.grades.updateGrade({
+      studentID: this.userID,
+      grade: val.target.value}
+    , ref);
   }
 
   getOptions(data, method) {

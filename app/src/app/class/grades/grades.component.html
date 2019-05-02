@@ -37,7 +37,8 @@
             </mat-menu>
           </div>
         </div>
-        <div class='class-assignment' *ngFor='let assignment of gradeType.assignments.data' (click)='dataActions({"type": "assignment", "action": "update", "data": assignment}, gradeType.refString)'>
+        <div class='class-assignment' *ngFor='let assignment of gradeType.assignments.data'
+          >
           <div class='class-assignment-title'>
             {{assignment.name}}
           </div>
@@ -45,6 +46,10 @@
             <div class='assignment-date'>{{assignment.date}}</div>
             <div class='assignment-time'>{{assignment.hours + ':' + assignment.minutes}}</div>
             <div class='assigment-AMPM'>{{assignment.AMPM}}</div>
+            <div class='assignment-grade'>
+              <input (keyup)='updateGrade($event, assignment.dbID, gradeType.refString)' class='assignment-grade-input' [value]='assignment.grade'/>
+              <span class='percent-sign'>%</span>
+            </div>
           </div>
         </div>
       </div>
