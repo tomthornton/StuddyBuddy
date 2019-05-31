@@ -1,6 +1,8 @@
-##StudyBuddy - CSCI459 Project
+##StudyBuddy
 
-#Instructions
+Built with Angular & Firebase
+
+#Development server
 
 1. docker-compose up
   
